@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hand.dao.FilmDao">
+    <!-- target:provide sql configuration for DAO interface -->
+    <!-- <resultMap type="com.hand.entity.Film" id="filmRM">
+    	<id property="film_id" column="film_id" jdbcType="INTEGER"/>
+    	<result property="title" column="title" jdbcType="VARCHAR"/>
+    	<result property="description" column="description" jdbcType="VARCHAR"/>
+    	<result property=""/>
+    	<association property="Language" >
+    		<id property="language_id" column="language_id" jdbcType="INTEGER"/>
+    		<result property="name" column="name" jdbcType="VARCHAR"/>
+    	</association>
+    </resultMap> -->
+    <select id="QueryAllFilm" resultType="Film" >
+      SELECT
+       	f.film_id,
+        f.title,
+        f.description,
+        l.name as "language.name"
+      FROM
+        film f ,language l WHERE f.language_id=l.language_id ;
+    </select>
+	<delete id="deleteById" parameterType="int">
+		delete from film where film_id=#{film_id} 
+	</delete>
+	<insert id="insertFilm" parameterType="Film">
+		insert into film (title,description,language_id) 
+		values(#{title},#{description},#{language.language_id})
+	</insert>
+	<update id="updateFilm" parameterType="Film">
+		
+	</update>
+	
+    
+</mapper>

@@ -1,0 +1,17 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hand.dao.LanguageDao">
+    <!-- target:provide sql configuration for DAO interface -->
+    
+    <select id="getLanguageName" resultType="Language" >
+      SELECT
+      	language_id,
+        name
+      FROM
+        language
+      where 1=1
+    </select>
+
+    
+</mapper>
